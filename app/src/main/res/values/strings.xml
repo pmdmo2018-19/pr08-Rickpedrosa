@@ -16,6 +16,8 @@ Ahorarr ese que llega a wan diodenoo ese pedazo de te va a hasé pupitaa te voy 
     <string name="app_name">pr08RPT</string>
     <string name="initFragment_lblTitle">Lorem</string>
     <string name="initfragment_settings">Settings</string>
+    <string name="this_is_the_detail_fragment">This is the detail fragment</string>
+    <string name="detailFragment_lblTitle">Detail</string>
     <string-array name="prefLoreChiquito_entries">
         <item>Latin</item>
         <item>Chiquito</item>

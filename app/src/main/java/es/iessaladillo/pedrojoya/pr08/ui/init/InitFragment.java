@@ -1,9 +1,8 @@
 package es.iessaladillo.pedrojoya.pr08.ui.init;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
@@ -12,13 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import es.iessaladillo.pedrojoya.pr08.R;
 import es.iessaladillo.pedrojoya.pr08.databinding.InitFragmentBinding;
+import es.iessaladillo.pedrojoya.pr08.ui.detail.DetailFragment;
 import es.iessaladillo.pedrojoya.pr08.utils.FragmentUtils;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
+import android.widget.Toast;
 
 public class InitFragment extends Fragment {
 
@@ -39,9 +38,9 @@ public class InitFragment extends Fragment {
         b.toolbarInitFragment.setTitle(R.string.initFragment_lblTitle);
         b.toolbarInitFragment.inflateMenu(R.menu.init_fragment);
         b.toolbarInitFragment.setOnMenuItemClickListener(item -> {
-            //noinspection RedundantIfStatement
             if (item.getItemId() == R.id.mnuSettings) {
-               // FragmentUtils.replaceFragmentAddToBackstack(getFragmentManager(), );
+                // FragmentUtils.replaceFragmentAddToBackstack(getFragmentManager(), );
+                Toast.makeText(requireContext(), "Yo abriré settings_fragment", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
                 return false;
@@ -66,9 +65,9 @@ public class InitFragment extends Fragment {
     }
 
     private void setupFab() {
-        b.initFragmentFab.setOnClickListener(v -> {
-            //Abrir fragmento de detalle
-        });
+        b.initFragmentFab.setOnClickListener(v -> FragmentUtils.replaceFragmentAddToBackstack(requireFragmentManager(),
+                R.id.flInit, DetailFragment.newInstance(), DetailFragment.class.getSimpleName()
+                , DetailFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE));
     }
 
 }
