@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import es.iessaladillo.pedrojoya.pr08.R;
 import es.iessaladillo.pedrojoya.pr08.databinding.InitFragmentBinding;
 import es.iessaladillo.pedrojoya.pr08.ui.detail.DetailFragment;
+import es.iessaladillo.pedrojoya.pr08.ui.settings.SettingsFragment;
 import es.iessaladillo.pedrojoya.pr08.utils.FragmentUtils;
 
 import android.view.LayoutInflater;
@@ -39,7 +40,9 @@ public class InitFragment extends Fragment {
         b.toolbarInitFragment.inflateMenu(R.menu.init_fragment);
         b.toolbarInitFragment.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.mnuSettings) {
-                // FragmentUtils.replaceFragmentAddToBackstack(getFragmentManager(), );
+                FragmentUtils.replaceFragmentAddToBackstack(requireFragmentManager(),
+                        R.id.flInit, SettingsFragment.newInstance(),
+                        SettingsFragment.class.getSimpleName(), SettingsFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 Toast.makeText(requireContext(), "Yo abriré settings_fragment", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
