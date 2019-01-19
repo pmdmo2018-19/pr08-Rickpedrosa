@@ -4,26 +4,28 @@ package es.iessaladillo.pedrojoya.pr08.ui.init;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import es.iessaladillo.pedrojoya.pr08.R;
 import es.iessaladillo.pedrojoya.pr08.databinding.InitFragmentBinding;
 import es.iessaladillo.pedrojoya.pr08.ui.detail.DetailFragment;
 import es.iessaladillo.pedrojoya.pr08.ui.settings.SettingsFragment;
 import es.iessaladillo.pedrojoya.pr08.utils.FragmentUtils;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-public class InitFragment extends Fragment {
+public class InitFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    //private InitViewModel mViewModel;
     private InitFragmentBinding b;
+    private SharedPreferences sharedPreferences;
 
     public static InitFragment newInstance() {
         return new InitFragment();
@@ -43,7 +45,6 @@ public class InitFragment extends Fragment {
                 FragmentUtils.replaceFragmentAddToBackstack(requireFragmentManager(),
                         R.id.flInit, SettingsFragment.newInstance(),
                         SettingsFragment.class.getSimpleName(), SettingsFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                Toast.makeText(requireContext(), "Yo abriré settings_fragment", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
                 return false;
@@ -61,10 +62,30 @@ public class InitFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setupViews();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        showLoremText();
+    }
+
+    private void setupViews() {
         setupToolbar();
         setupFab();
-        //mViewModel = ViewModelProviders.of(this).get(InitViewModel.class);
-        // TODO: Use the ViewModel
+    }
+
+    private void showLoremText() {
+        b.lblLorem.setText(sharedPreferences.getString(getString(R.string.lore_or_chiquito_prefkey), getString(R.string.main_latin_ipsum)));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
     }
 
     private void setupFab() {
@@ -73,4 +94,10 @@ public class InitFragment extends Fragment {
                 , DetailFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE));
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (TextUtils.equals(key, getString(R.string.lore_or_chiquito_prefkey))) {
+            showLoremText();
+        }
+    }
 }

@@ -5,7 +5,7 @@
         android:defaultValue="@string/prefLoreChiquito_defaultValue"
         android:dialogTitle="@string/prefLoreChiquito_dialogTitle"
         android:entries="@array/prefLoreChiquito_entries"
-        android:entryValues="@array/prefLoreChiquito_entries"
+        android:entryValues="@array/prefLoreChiquito_entriesValues"
         android:icon="@drawable/ic_wrap_text_black_24dp"
         android:key="@string/lore_or_chiquito_prefkey"
         android:title="@string/prefLoreChiquito_dialogTitle"

@@ -23,4 +23,8 @@ Ahorarr ese que llega a wan diodenoo ese pedazo de te va a hasé pupitaa te voy 
         <item>Latin</item>
         <item>Chiquito</item>
     </string-array>
+    <string-array name="prefLoreChiquito_entriesValues">
+        <item>@string/main_latin_ipsum</item>
+        <item>@string/main_chiquito_ipsum</item>
+    </string-array>
 </resources>
