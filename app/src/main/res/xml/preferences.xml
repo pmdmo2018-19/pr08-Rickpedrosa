@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ListPreference
-        android:defaultValue="@string/prefLoreChiquito_defaultValue"
+        android:defaultValue="@string/main_latin_ipsum"
         android:dialogTitle="@string/prefLoreChiquito_dialogTitle"
         android:entries="@array/prefLoreChiquito_entries"
         android:entryValues="@array/prefLoreChiquito_entriesValues"

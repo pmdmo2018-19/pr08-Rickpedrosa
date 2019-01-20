@@ -19,9 +19,14 @@ Ahorarr ese que llega a wan diodenoo ese pedazo de te va a hasé pupitaa te voy 
     <string name="this_is_the_detail_fragment">This is the detail fragment</string>
     <string name="detailFragment_lblTitle">Detail</string>
     <string name="fragmentSettings_title_toolbar">Settings</string>
+    <string name="summary_lorem">Lorem Type</string>
+
+    <string name="latin_mode">Latin</string>
+    <string name="chiquito_mode">Chiquito</string>
+
     <string-array name="prefLoreChiquito_entries">
-        <item>Latin</item>
-        <item>Chiquito</item>
+        <item>@string/latin_mode</item>
+        <item>@string/chiquito_mode</item>
     </string-array>
     <string-array name="prefLoreChiquito_entriesValues">
         <item>@string/main_latin_ipsum</item>

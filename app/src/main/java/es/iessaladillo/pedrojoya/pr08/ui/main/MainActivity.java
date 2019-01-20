@@ -8,23 +8,15 @@ import es.iessaladillo.pedrojoya.pr08.ui.init.InitFragment;
 import es.iessaladillo.pedrojoya.pr08.utils.FragmentUtils;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 public class MainActivity extends AppCompatActivity {
-
-    private MainActivityViewModel viewModel; //viewModel.getContainerForLorem().setText();
-    //setTitle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
-//        viewModel.getLoremType().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(String s) {
-//
-//            }
-//        });
+        //PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         if (savedInstanceState == null) {
             FragmentUtils.replaceFragment(getSupportFragmentManager(), R.id.flInit, InitFragment.newInstance(), InitFragment.class.getSimpleName());
         }

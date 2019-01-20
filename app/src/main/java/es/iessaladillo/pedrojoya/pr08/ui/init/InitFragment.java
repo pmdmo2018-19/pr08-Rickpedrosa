@@ -37,21 +37,6 @@ public class InitFragment extends Fragment implements SharedPreferences.OnShared
         setHasOptionsMenu(true);
     }
 
-    private void setupToolbar() {
-        b.toolbarInitFragment.setTitle(R.string.initFragment_lblTitle);
-        b.toolbarInitFragment.inflateMenu(R.menu.init_fragment);
-        b.toolbarInitFragment.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.mnuSettings) {
-                FragmentUtils.replaceFragmentAddToBackstack(requireFragmentManager(),
-                        R.id.flInit, SettingsFragment.newInstance(),
-                        SettingsFragment.class.getSimpleName(), SettingsFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                return true;
-            } else {
-                return false;
-            }
-        });
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -92,6 +77,22 @@ public class InitFragment extends Fragment implements SharedPreferences.OnShared
         b.initFragmentFab.setOnClickListener(v -> FragmentUtils.replaceFragmentAddToBackstack(requireFragmentManager(),
                 R.id.flInit, DetailFragment.newInstance(), DetailFragment.class.getSimpleName()
                 , DetailFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE));
+    }
+
+
+    private void setupToolbar() {
+        b.toolbarInitFragment.setTitle(R.string.initFragment_lblTitle);
+        b.toolbarInitFragment.inflateMenu(R.menu.init_fragment);
+        b.toolbarInitFragment.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.mnuSettings) {
+                FragmentUtils.replaceFragmentAddToBackstack(requireFragmentManager(),
+                        R.id.flInit, SettingsFragment.newInstance(),
+                        SettingsFragment.class.getSimpleName(), SettingsFragment.class.getSimpleName(), FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                return true;
+            } else {
+                return false;
+            }
+        });
     }
 
     @Override
