@@ -38,8 +38,7 @@
                 android:id="@+id/lblLorem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/main_latin_ipsum" />
+                android:padding="8dp" />
 
         </androidx.core.widget.NestedScrollView>
 
